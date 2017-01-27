@@ -1,0 +1,17 @@
+{
+  "name": "tomaszmadeyski/load_balancer",
+  "description": "Load balancer demo",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "Tomasz Madeyski",
+      "email": "tomasz.madeyski@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "LoadBalancer\\": "src/",
+      "LoadBalancer\\Tests\\": "Tests/"
+    }
+  }
+}
