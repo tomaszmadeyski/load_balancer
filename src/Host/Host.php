@@ -2,22 +2,21 @@
 
 namespace LoadBalancer\Host;
 
+
 use LoadBalancer\Http\Request\RequestInterface;
 
-/**
- * Interface for host configuration class
- *
- * @package Host
- * @author  Tomasz Madeyski <tomasz.madeyski@gmail.com>
- */
-interface HostInterface
+class Host implements HostInterface
 {
+
     /**
      * Returns current load of host in percents (0-100)
      *
      * @return int
      */
-    public function getLoad();
+    public function getLoad()
+    {
+        // TODO: Implement getLoad() method.
+    }
 
     /**
      * Method handles a request
@@ -26,5 +25,8 @@ interface HostInterface
      *
      * @return void
      */
-    public function handleRequest(RequestInterface $request);
+    public function handleRequest(RequestInterface $request)
+    {
+        // TODO: Implement handleRequest() method.
+    }
 }

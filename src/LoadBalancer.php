@@ -2,10 +2,16 @@
 
 namespace LoadBalancer;
 
-use Host\HostCollection;
+use LoadBalancer\Host\HostCollection;
 use LoadBalancer\Http\Request\RequestInterface;
-use Variant\BalanceAlgorithmInterface;
+use LoadBalancer\Variant\BalanceAlgorithmInterface;
 
+/**
+ * Load balancer implementation
+ *
+ * @package LoadBalancer
+ * @author  Tomasz Madeyski <tomasz.madeyski@gmail.com>
+ */
 class LoadBalancer implements LoadBalancerInterface
 {
     /**
@@ -21,10 +27,19 @@ class LoadBalancer implements LoadBalancerInterface
     {
         $this->hostCollection = $hostCollection;
         $this->balanceAlgorithm = $balanceAlgorithm;
+
+        if (empty($this->hostCollection->getHosts())) {
+            throw new \InvalidArgumentException('HostCollection must not be empty');
+        }
     }
-    
+
+    /**
+     * Handles request using algorithm set in constructor
+     *
+     * @param RequestInterface $request
+     */
     public function handleRequest(RequestInterface $request)
     {
-        // TODO: Implement handleRequest() method.
+        $this->balanceAlgorithm->loadBalance($request, $this->hostCollection);
     }
 }

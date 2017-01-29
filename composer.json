@@ -13,5 +13,8 @@
       "LoadBalancer\\": "src/",
       "LoadBalancer\\Tests\\": "Tests/"
     }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "5.7.9"
   }
 }
