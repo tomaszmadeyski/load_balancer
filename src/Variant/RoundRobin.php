@@ -3,18 +3,10 @@
 namespace LoadBalancer\Variant;
 
 use LoadBalancer\Host\HostCollection;
-use LoadBalancer\Http\Request\RequestInterface;
 
-class RoundRobin implements BalanceAlgorithmInterface
+class RoundRobin extends BaseLoadBalanceVariant implements BalanceAlgorithmInterface
 {
     protected $nextIndexToUse = 0;
-
-    public function loadBalance(RequestInterface $request, HostCollection $hostCollection)
-    {
-        $hostToUse = $this->getNextHostToUse($hostCollection);
-
-        $hostToUse->handleRequest($request);
-    }
 
     /**
      * @return int
@@ -25,9 +17,7 @@ class RoundRobin implements BalanceAlgorithmInterface
     }
 
     /**
-     * @param HostCollection $hostCollection
-     *
-     * @return \LoadBalancer\Host\HostInterface
+     * {@inheritdoc}
      */
     protected function getNextHostToUse(HostCollection $hostCollection)
     {
